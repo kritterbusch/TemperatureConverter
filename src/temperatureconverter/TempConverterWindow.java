@@ -20,6 +20,7 @@ public class TempConverterWindow extends javax.swing.JFrame {
     public TempConverterWindow() {
         initComponents();
         tempConverter = new TemperatureConverterService();
+        
     }
 
     /**
@@ -35,9 +36,11 @@ public class TempConverterWindow extends javax.swing.JFrame {
         txtEnterValue = new javax.swing.JTextField();
         btnConvert = new javax.swing.JButton();
         txtConverterTitle = new javax.swing.JLabel();
+        txtInstruction = new javax.swing.JLabel();
+        ConversionSelection = new javax.swing.JPanel();
         slctCtoF = new javax.swing.JRadioButton();
         slctFtoC = new javax.swing.JRadioButton();
-        txtInstruction = new javax.swing.JLabel();
+        TempOutput = new javax.swing.JPanel();
         lblOutputMessage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -61,7 +64,13 @@ public class TempConverterWindow extends javax.swing.JFrame {
         txtConverterTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtConverterTitle.setText("Temperature Converter");
 
+        txtInstruction.setText("Enter Value to Convert");
+
+        ConversionSelection.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Conversion Options", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 10))); // NOI18N
+        ConversionSelection.setToolTipText("");
+
         btnGrpSelection.add(slctCtoF);
+        slctCtoF.setSelected(true);
         slctCtoF.setText("Celsius to Fahrenheit");
         slctCtoF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,59 +86,91 @@ public class TempConverterWindow extends javax.swing.JFrame {
             }
         });
 
-        txtInstruction.setText("Enter Value to Convert");
+        javax.swing.GroupLayout ConversionSelectionLayout = new javax.swing.GroupLayout(ConversionSelection);
+        ConversionSelection.setLayout(ConversionSelectionLayout);
+        ConversionSelectionLayout.setHorizontalGroup(
+            ConversionSelectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ConversionSelectionLayout.createSequentialGroup()
+                .addGap(71, 71, 71)
+                .addGroup(ConversionSelectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(slctFtoC)
+                    .addComponent(slctCtoF))
+                .addContainerGap(81, Short.MAX_VALUE))
+        );
+        ConversionSelectionLayout.setVerticalGroup(
+            ConversionSelectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ConversionSelectionLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(slctCtoF)
+                .addGap(18, 18, 18)
+                .addComponent(slctFtoC)
+                .addGap(20, 20, 20))
+        );
+
+        TempOutput.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Temperature Output", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 10))); // NOI18N
 
         lblOutputMessage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout TempOutputLayout = new javax.swing.GroupLayout(TempOutput);
+        TempOutput.setLayout(TempOutputLayout);
+        TempOutputLayout.setHorizontalGroup(
+            TempOutputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TempOutputLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblOutputMessage, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        TempOutputLayout.setVerticalGroup(
+            TempOutputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TempOutputLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblOutputMessage, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addComponent(slctCtoF)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                        .addComponent(slctFtoC))
+                        .addContainerGap()
+                        .addComponent(txtConverterTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(111, 111, 111)
-                        .addComponent(txtInstruction)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtEnterValue, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(55, 55, 55))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblOutputMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(TempOutput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ConversionSelection, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 16, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtConverterTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(160, 160, 160)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btnConvert)
+                .addGap(134, 134, 134))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addComponent(txtInstruction)
+                .addGap(18, 18, 18)
+                .addComponent(txtEnterValue, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(txtConverterTitle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(slctCtoF)
-                    .addComponent(slctFtoC))
                 .addGap(24, 24, 24)
+                .addComponent(txtConverterTitle)
+                .addGap(18, 18, 18)
+                .addComponent(ConversionSelection, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtInstruction)
                     .addComponent(txtEnterValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(lblOutputMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TempOutput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnConvert)
-                .addGap(27, 27, 27))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
@@ -164,6 +205,8 @@ public class TempConverterWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_btnConvertActionPerformed
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel ConversionSelection;
+    private javax.swing.JPanel TempOutput;
     private javax.swing.JButton btnConvert;
     private javax.swing.ButtonGroup btnGrpSelection;
     private javax.swing.JLabel lblOutputMessage;
